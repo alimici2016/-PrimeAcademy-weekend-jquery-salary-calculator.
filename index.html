@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jQuery.js"></script>
+    <script src="client.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    
+</head>
+<h1>Salary Calculator</h1>
+<body>
+    <div>
+    <input placeholder="first name" id="firstName"></input>
+    <input placeholder="last name" id="lastName"></input>
+    <input placeholder="ID number" id="idNumber"></input>
+    <input placeholder="job title" id="jobTitle"></input>
+    <input placeholder="annual salary" id="annualSalary"></input>
+    <button id="submit">Submit</button>
+    </div>
+   
+    <table class="table">
+        <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>ID Number</th>
+                    <th>Job Title</th>
+                    <th>Annual Salary</th>
+                    <!-- <th><button class="refresh">REFRESH</button></th> -->
+                </tr>
+        </thead>
+        <tbody id="container">
+
+        </tbody>
+    </table>
+    <h3>MONTHLY SALARY:<span id="monthlySal"></span></h3>
+</body>
+</html>
