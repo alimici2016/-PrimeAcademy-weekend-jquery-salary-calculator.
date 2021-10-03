@@ -1,5 +1,6 @@
 $(readyNow);
-let employerList = [];
+let employeeList = [];
+let fixSalary = 0;
 let totalMonthlySalary = 0;
 
 function readyNow() {
@@ -14,6 +15,7 @@ function refreshList() {
 }
 
 function addUser() {
+    $("userObject").empty();
     //const userName = $(`#firstName`).val()//getter
     //console.log(userName)
     let userObject = {
@@ -24,7 +26,7 @@ function addUser() {
         annSalary: $("#annualSalary").val()
     }
     //console.log(userObject)
-    employerList.push(userObject);
+    employeeList.push(userObject);
     userObject = {
         userName: $("#firstName").val(''),
         userLastName: $("#lastName").val(''),
@@ -38,8 +40,8 @@ function addUser() {
 //console.log(employerList)
 function render() {
     $("#container").empty();
-    for (let userObject of employerList) {
-        const employee =
+    for (let userObject of employeeList) {
+        const employeeInfo =
             $(`
     <tr> 
         <td>${userObject.userName}</td>
@@ -50,16 +52,30 @@ function render() {
         <td><button id="deleteBtn">DELETE</button></td>
     </tr>
 `);
-        $("#container").append(employee);
+        $("#container").append(employeeInfo);
     }
 }
 
 function monthlyCost() {
-    for (let i = 0; i < employerList.length; i++) {
-        let fixSalary = Number(employerList[i].annSalary);
-        totalMonthlySalary += fixSalary /12;
-        //totalMonthlySalary / 12
-        return totalMonthlySalary;
+    //$("#monthlySal").empty();
+    let totalSalary = 0;
+    for (let i = 0; i < employeeList.length; i++) {
+        let fixSalary = Number(employeeList[i].annSalary);
+        totalSalary += fixSalary;
     }
+    totalMonthlySalary = totalSalary / 12;
+    //totalMonthlySalary / 12
+    //console.log(totalMonthlySalary);    
+   if (totalMonthlySalary > 20000){
+       $("#monthlySal").addClass("redbackground")
+   }
+    $("#monthlySal").text(formatCurrency(totalMonthlySalary));
 }
-console.log(monthlyCost(employerList));
+
+function formatCurrency(number) {
+    return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 2,
+    }).format(number);
+  }
