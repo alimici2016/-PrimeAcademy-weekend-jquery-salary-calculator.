@@ -1,3 +1,13 @@
 .redbackground{
 background-color: red;
 }
+h1 {
+    text-align: center;
+    background-color: gray;
+    color: white;
+    padding: 40px;
+}
+.money {
+    text-align: right;
+    margin-right: 20px;
+}
